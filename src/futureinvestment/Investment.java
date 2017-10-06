@@ -8,7 +8,7 @@ package futureinvestment;
  * Description: This class is the representation of a single Investment in the InvestmentCalculator class
  */
 public class Investment {
-    private double monthlyInterestRate;
+    private double annualInterestRate;
     private int numberOfYears;
     private double investmentAmount;
     private java.util.Date investmentDate;
@@ -21,34 +21,34 @@ public class Investment {
     }
 
     /**
-     * Construct a investment with specified monthly interest rate,
+     * Construct a investment with specified annual interest rate,
      * number of years, and investment amount.
-     * @param monthlyInterestRate The interest rate of the investment.
+     * @param annualInterestRate The interest rate of the investment.
      * @param investmentAmount The initial amount of the investment.
      * @param numberOfYears The number of years to pay off the investment.
      */
-    public Investment(double monthlyInterestRate, int numberOfYears,
+    public Investment(double annualInterestRate, int numberOfYears,
                 double investmentAmount) {
-        this.monthlyInterestRate = monthlyInterestRate;
+        this.annualInterestRate = annualInterestRate;
         this.numberOfYears = numberOfYears;
         this.investmentAmount = investmentAmount;
         investmentDate = new java.util.Date();
     }
 
     /**
-     * Return monthlyInterestRate
+     * Return annualInterestRate
      * @return The interest rate of the investment.
      */
-    public double getMonthlyInterestRate() {
-        return monthlyInterestRate;
+    public double getAnnualInterestRate() {
+        return annualInterestRate;
     }
 
     /**
-     * Set a new monthlyInterestRate
-     * @param monthlyInterestRate The interest rate of the investment.
+     * Set a new annualInterestRate
+     * @param annualInterestRate The interest rate of the investment.
      */
-    public void setMonthlyInterestRate(double monthlyInterestRate) {
-        this.monthlyInterestRate = monthlyInterestRate;
+    public void setAnnualInterestRate(double annualInterestRate) {
+        this.annualInterestRate = annualInterestRate;
     }
 
     /**
@@ -84,14 +84,14 @@ public class Investment {
     }
 
 //    /**
-//     * Find monthly payment
-//     * @return The monthly payment required
+//     * Find annual payment
+//     * @return The annual payment required
 //     */
-//    public double getMonthlyPayment() {
-//        double monthlyInterestRate = monthlyInterestRate / 1200;
-//        double monthlyPayment = investmentAmount * monthlyInterestRate / (1 -
-//                (1 / Math.pow(1 + monthlyInterestRate, numberOfYears * 12)));
-//        return monthlyPayment;
+//    public double getAnnualPayment() {
+//        double annualInterestRate = annualInterestRate / 1200;
+//        double annualPayment = investmentAmount * annualInterestRate / (1 -
+//                (1 / Math.pow(1 + annualInterestRate, numberOfYears * 12)));
+//        return annualPayment;
 //    }
 
     /**
@@ -99,8 +99,8 @@ public class Investment {
      * @return The total amount to pay of the investment in it's entirety.
      */
     public double getFutureValue() {
-//        double totalPayment = getMonthlyPayment() * numberOfYears * 12;
-        double futureValue = this.getInvestmentAmount() * Math.pow(1 + (this.getMonthlyInterestRate() / 100),(this.getNumberOfYears() * 12));
+//        double totalPayment = getAnnualPayment() * numberOfYears * 12;
+        double futureValue = this.getInvestmentAmount() * Math.pow(1 + ((this.getAnnualInterestRate() / 12) / 100),(this.getNumberOfYears() * 12));
         return futureValue;
     }
 
