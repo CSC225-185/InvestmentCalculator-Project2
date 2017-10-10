@@ -91,13 +91,13 @@ public class FutureInvestment extends Application {
         // Get values from text fields
         double interest = Double.parseDouble(tfAnnualInterestRate.getText());   // Get the interest rate from textbox, convert to double and store in variable
         int year = Integer.parseInt(tfNumberOfYears.getText());                 // Get the period from the textbox convert to integer and store in variable
-        double investmentAmount = Double.parseDouble(tfInvestmentAmount.getText());		// Get the investment amount from the textbox, convert to double and store in variable
+        double investmentAmount = Double.parseDouble(tfInvestmentAmount.getText());	// Get the investment amount from the textbox, convert to double and store in variable
 
         // Create a investment object.  Investment defined in listing 10.2
-        Investment investment = new Investment(interest, year, investmentAmount);			//  Create new object using information read from GUI
+        Investment investment = new Investment(interest, year, investmentAmount);       //  Create new object using information read from GUI
 
         //Display monthly payment and total payment
-        tfTotalPayment.setText(String.format("$%.2f", investment.getFutureValue())); 	// Get the total payment from the object, format it to look good and display it in the textbox
+        tfTotalPayment.setText(String.format("$%.2f", investment.getFutureValue())); 	// Get the total value of the investment, format it to look good and display it in the textbox
     }
 
 }
