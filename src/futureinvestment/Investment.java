@@ -23,6 +23,7 @@ public class Investment {
     /**
      * Construct a investment with specified annual interest rate,
      * number of years, and investment amount.
+     * 
      * @param annualInterestRate The interest rate of the investment.
      * @param investmentAmount The initial amount of the investment.
      * @param numberOfYears The number of years to pay off the investment.
@@ -37,6 +38,7 @@ public class Investment {
 
     /**
      * Return annualInterestRate
+     * 
      * @return The interest rate of the investment.
      */
     public double getAnnualInterestRate() {
@@ -45,6 +47,7 @@ public class Investment {
 
     /**
      * Set a new annualInterestRate
+     * 
      * @param annualInterestRate The interest rate of the investment.
      */
     public void setAnnualInterestRate(double annualInterestRate) {
@@ -53,7 +56,8 @@ public class Investment {
 
     /**
      * Return numberOfYears
-     * @return The number of years to pay off the investment.
+     * 
+     * @return The duration off the investment.
      */
     public int getNumberOfYears() {
         return numberOfYears;
@@ -61,7 +65,8 @@ public class Investment {
 
     /**
      * Set a new numberOfYears
-     * @param numberOfYears The number of years to pay off the investment.
+     * 
+     * @param numberOfYears The duration off the investment.
      */
     public void setNumberOfYears(int numberOfYears) {
         this.numberOfYears = numberOfYears;
@@ -69,6 +74,7 @@ public class Investment {
 
     /**
      * Return investmentAmount
+     * 
      * @return The initial amount of the investment.
      */
     public double getInvestmentAmount() {
@@ -77,35 +83,26 @@ public class Investment {
 
     /**
      * Set a new investmentAmount
+     * 
      * @param investmentAmount The initial amount of the investment.
      */
     public void setInvestmentAmount(double investmentAmount) {
         this.investmentAmount = investmentAmount;
     }
 
-//    /**
-//     * Find annual payment
-//     * @return The annual payment required
-//     */
-//    public double getAnnualPayment() {
-//        double annualInterestRate = annualInterestRate / 1200;
-//        double annualPayment = investmentAmount * annualInterestRate / (1 -
-//                (1 / Math.pow(1 + annualInterestRate, numberOfYears * 12)));
-//        return annualPayment;
-//    }
-
     /**
      * Find total payment
-     * @return The total amount to pay of the investment in it's entirety.
+     * 
+     * @return The total value of the investment in it's entirety.
      */
     public double getFutureValue() {
-//        double totalPayment = getAnnualPayment() * numberOfYears * 12;
         double futureValue = this.getInvestmentAmount() * Math.pow(1 + ((this.getAnnualInterestRate() / 12) / 100),(this.getNumberOfYears() * 12));
         return futureValue;
     }
 
     /**
      * Return investment date
+     * 
      * @return The date of the investment.
      */
     public java.util.Date getInvestmentDate() {
