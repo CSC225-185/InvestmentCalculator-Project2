@@ -45,7 +45,7 @@ public class FutureInvestment extends Application {
     private TextField tfAnnualInterestRate  = new TextField();          // Define text fields
     private TextField tfNumberOfYears       = new TextField();
     private TextField tfInvestmentAmount    = new TextField();
-    private TextField tfTotalPayment        = new TextField();
+    private TextField tfFutureValue        = new TextField();
     private Button btCalculate              = new Button("Calculate");  // Define button
 
     @Override                                                           // Override the start method in the Appliation class
@@ -61,20 +61,20 @@ public class FutureInvestment extends Application {
         gridPane.add(new Label("Annual Interest Rate:"), 0, 2);         // Add the Annual Interest Rate label to the gridpane
         gridPane.add(tfAnnualInterestRate, 1, 2);                       // Add the Annual Interest Rate textbox to the gridpane
         gridPane.add(new Label("Future Value:"), 0, 3);                 // Add the Future Value label to the gridpane
-        gridPane.add(tfTotalPayment, 1, 3);                             // Add the Future Value textbox to the gridpane
+        gridPane.add(tfFutureValue, 1, 3);                              // Add the Future Value textbox to the gridpane
         gridPane.add(btCalculate, 1, 5);                                // Add the Calculate button to the gridpane
 
         // Set properties for UI
         gridPane.setAlignment(Pos.CENTER);                              // Set gridpane alignment to center
         tfAnnualInterestRate.setAlignment(Pos.BOTTOM_RIGHT);		// Set alignment of Annual Interest Rate textbox to bottom right
         tfNumberOfYears.setAlignment(Pos.BOTTOM_RIGHT);			// Set alignment of Number of Years textbox to bottom right
-        tfInvestmentAmount.setAlignment(Pos.BOTTOM_RIGHT);			// Set alignment of Investment Amount textbox to bottom right
-        tfTotalPayment.setAlignment(Pos.BOTTOM_RIGHT);			// Set alignment of Future Value textbox to bottom right
-        tfTotalPayment.setEditable(false);				// Set the editable property of the Future Value textbox to false (not allowed to edit)
+        tfInvestmentAmount.setAlignment(Pos.BOTTOM_RIGHT);		// Set alignment of Investment Amount textbox to bottom right
+        tfFutureValue.setAlignment(Pos.BOTTOM_RIGHT);			// Set alignment of Future Value textbox to bottom right
+        tfFutureValue.setEditable(false);				// Set the editable property of the Future Value textbox to false (not allowed to edit)
         GridPane.setHalignment(btCalculate, HPos.RIGHT);		// Set the horizontal alignment of the calculate button to right
 
         // Process events
-        btCalculate.setOnAction(e -> calculateInvestmentPayment());     // Add an action listener to the calculate button
+        btCalculate.setOnAction(e -> calculateInvestmentValue());     // Add an action listener to the calculate button
 
         // Create a scene and place it in the stage
         Scene scene = new Scene(gridPane, 400, 250);			// Define and create the new scene with defined parameters (size)
@@ -87,7 +87,7 @@ public class FutureInvestment extends Application {
      * Calculate and display the investment amount information
      */
 
-    private void calculateInvestmentPayment() {
+    private void calculateInvestmentValue() {
         // Get values from text fields
         double interest = Double.parseDouble(tfAnnualInterestRate.getText());   // Get the interest rate from textbox, convert to double and store in variable
         int year = Integer.parseInt(tfNumberOfYears.getText());                 // Get the period from the textbox convert to integer and store in variable
@@ -97,7 +97,7 @@ public class FutureInvestment extends Application {
         Investment investment = new Investment(interest, year, investmentAmount);       //  Create new object using information read from GUI
 
         //Display monthly payment and total payment
-        tfTotalPayment.setText(String.format("$%.2f", investment.getFutureValue())); 	// Get the total value of the investment, format it to look good and display it in the textbox
+        tfFutureValue.setText(String.format("$%.2f", investment.getFutureValue())); 	// Get the total value of the investment, format it to look good and display it in the textbox
     }
 
 }
